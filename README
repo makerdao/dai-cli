@@ -1,0 +1,123 @@
+DAI CLI
+
+  Dai 1.0 is a simple version of the diversely collateralized Dai.
+
+  In this model there is one type of underlying collateral (called gems).
+  The PETH token represents claims on the system's excess gems, and is the
+  only admissible type of collateral. Gems can be converted to/from PETH.
+
+  Any transfers of dai or PETH are done using the normal ERC20 interface;
+  until settlement mode is triggered, dai users should only need ERC20.
+
+  To conveniently perform ERC20 transfers, see the token(1) program
+  available at <https://github.com/dapphub/token>.
+
+SYNOPSIS
+
+  dai [<options>] <command> [<args>]
+  dai <command> --help
+
+INSTALLATION
+
+  make link             install seth(1) into /usr/local
+  make unlink           uninstall dai(1) from /usr/local
+
+DEPENDENCIES
+
+  seth                  https://dapp.tools/seth
+  node                  https://nodejs.org
+
+OPTIONS
+
+ -C, --cup=<id>         ID of cup to perform operation on
+     --tub=<address>    address of Tub to perform operation on
+     --tap=<address>    address of Tap to perform operation on
+     --top=<address>    address of Top to perform operation on
+
+TRANSACTION OPTIONS
+
+ -F, --from=<account>   account from which to send transaction
+ -G, --gas=<number>     amount of gas to provide with transaction
+
+COMMANDS
+
+ bite            initiate liquidation of an undercollateral cup
+ boom            buy some amount of dai to process joy (surplus)
+ bust            sell some amount of dai to process woe (bad debt)
+ cage            lock the system and initiate settlement
+ caged           get time of cage event (= 0 if system is not caged)
+ cash            cash in dai balance for gems after cage
+ cupi            get the last cup id
+ cups            list cups created by you
+ draw            issue the specified amount of dai stablecoins
+ drip            recalculate the internal debt price
+ exit            sell SKR for gems
+ free            remove excess SKR collateral from a cup
+ give            transfer ownership of a cup
+ heal            cancel debt
+ help            print help about dai(1) or one of its subcommands
+ join            buy SKR for gems
+ lock            post additional SKR collateral to a cup
+ open            create a new cup (collateralized debt position)
+ prod            recalculate the accrued holder fee (par)
+ safe            determine if a cup is safe
+ setAxe          update the liquidation penalty
+ setCap          update the debt ceiling
+ setFee          update the stability fee
+ setMat          update the liquidation ratio
+ setTapGap       update the spread on `boom` and `bust`
+ setTax          update the stability fee
+ setTubGap       update the spread on `join` and `exit`
+ setWay          update the holder fee (interest rate)
+ shut            close a cup
+ tapAsk          get the amount of skr in dai for bust
+ tapBid          get the amount of skr in dai for boom
+ tapGap          get the spread on `boom` and `bust`
+ tubAsk          get the amount of skr in gem for join
+ tubBid          get the amount of skr in gem for exit
+ tubGap          get the spread on `join` and `exit`
+ vent            process a caged tub
+ wipe            repay some portion of your existing dai debt
+
+SPECIAL COMMANDS
+
+ air             get the amount of backing collateral
+ axe             get the liquidation penalty
+ cap             get the debt ceiling
+ chi             get the internal debt price
+ cup             show the cup info
+ dai             get the dai token
+ din             get the debt backed by CDPs
+ fee             get the governance fee
+ fit             get the gem per skr settlement price
+ fix             get the gem per dai settlement price
+ fog             get the amount of skr pending liquidation
+ gem             get the collateral token
+ gov             get the gov token
+ ink             get the amount of skr collateral locked in a cup
+ joy             get the amount of surplus dai
+ lad             get the owner of a cup
+ mat             get the liquidation ratio
+ off             get the cage flag
+ out             get the post cage exit flag
+ par             get the accrued holder fee (ref per dai)
+ pep             get the gov price feed
+ per             get the current entry price (gem per skr)
+ pie             get the amount of raw collateral
+ pip             get the gem price feed
+ pit             get the liquidator vault
+ rap             get the amount of governance debt
+ ray             parse and display a 27-decimal fixed-point number
+ rhi             get the internal debt price including governance fee
+ rho             get the time of last drip
+ s2s             get the skr per dai rate (for boom and bust)
+ sin             get the sin token
+ skr             get the skr token
+ tab             get the amount of debt in a cup
+ tag             get the reference price (ref per skr)
+ tau             get the time of last prod
+ tax             get the stability fee
+ vox             get the target price engine
+ wad             parse and display a 18-decimal fixed-point number
+ way             get the holder fee (interest rate)
+ woe             get the amount of bad debt
