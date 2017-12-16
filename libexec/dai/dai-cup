@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-### sai-cup -- show the cup info
-### Usage: sai --cup=<id> cup
+### dai-cup -- show the cup info
+### Usage: dai --cup=<id> cup
 set -e
-[ ! -z "$SAI_CUP" ] || sai cup --usage
-echo >&2 "cup id $((${SAI_CUP?}))..."
-echo "lad: $(sai lad)"
-echo "ink: $(sai ink)"
-echo "tab: $(sai tab)"
-echo "rap: $(sai rap)"
+[ ! -z "$DAI_CUP" ] || dai cup --usage
+echo >&2 "cup id $((${DAI_CUP?}))..."
+echo "lad: $(dai lad)"
+echo "ink: $(dai ink)"
+echo "tab: $(dai tab)"
+echo "rap: $(dai rap)"

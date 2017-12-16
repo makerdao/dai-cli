@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-### sai-lad -- get the owner of a cup
-### Usage: sai --cup=<id> lad
+### dai-lad -- get the owner of a cup
+### Usage: dai --cup=<id> lad
 set -e
-[ ! -z "$SAI_CUP" ] || sai lad --usage
-lad=$(seth call "${SAI_TUB?}" 'lad(bytes32)' "${SAI_CUP?}")
+[ ! -z "$DAI_CUP" ] || dai lad --usage
+lad=$(seth call "${DAI_TUB?}" 'lad(bytes32)' "${DAI_CUP?}")
 echo "0x$(seth --abi-decode 'f()(address)' "$lad")"

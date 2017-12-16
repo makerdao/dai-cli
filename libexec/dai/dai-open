@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-### sai-open -- create a new cup (collateralized debt position)
+### dai-open -- create a new cup (collateralized debt position)
 set -e
 echo >&2 "Opening cup..."
 export SETH_ASYNC=yes
-tx=$(set -x; seth send "${SAI_TUB?}" "open()(bytes32)")
+tx=$(set -x; seth send "${DAI_TUB?}" "open()(bytes32)")
 export SETH_ASYNC=no
 echo >&2 -n "Waiting for transaction receipt..."
 number=$(SETH_TICK=true seth receipt "$tx" blockNumber)
 echo >&2
-seth rpc eth_getLogs -- -n {} -s "${SAI_TUB?}" -i address \
+seth rpc eth_getLogs -- -n {} -s "${DAI_TUB?}" -i address \
                                  -s "$number"  -i fromBlock \
                                  -s "$number"  -i toBlock \
                                    -n [] -s "$(seth keccak "$(seth --from-ascii 'LogNewCup(address,bytes32)')")" -i append \

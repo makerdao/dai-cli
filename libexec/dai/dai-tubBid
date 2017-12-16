@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-### sai-tubBid -- get the amount of skr in gem for exit
+### dai-tubBid -- get the amount of skr in gem for exit
 set -e
-[ $# = 1 ] || sai tubBid --usage
-wad=$(seth call "${SAI_TUB?}" "bid(uint256)" $(sai wad "$1"))
-sai wad -h "$wad"
+[ $# = 1 ] || dai tubBid --usage
+wad=$(seth call "${DAI_TUB?}" "bid(uint256)" $(dai wad "$1"))
+dai wad -h "$wad"

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-### sai-fix -- get the gem per sai settlement price
+### dai-fix -- get the gem per dai settlement price
 set -e
-ray=$(seth call "${SAI_TOP?}" "fix()")
-sai ray -h "$ray"
+ray=$(seth call "${DAI_TOP?}" "fix()")
+dai ray -h "$ray"

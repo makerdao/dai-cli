@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-### sai-setCap -- update the debt ceiling
-### Usage: sai setCap <new-cap>
+### dai-setCap -- update the debt ceiling
+### Usage: dai setCap <new-cap>
 set -e
-[ $# = 1 ] || sai setCap --usage
-wad=$(sai wad -h "$1")
+[ $# = 1 ] || dai setCap --usage
+wad=$(dai wad -h "$1")
 echo >&2 "Setting cap to $wad..."
-wad=$(sai wad "$1")
-(set -x; seth send "${SAI_MOM?}" "setCap(uint256)" "$wad")
+wad=$(dai wad "$1")
+(set -x; seth send "${DAI_MOM?}" "setCap(uint256)" "$wad")

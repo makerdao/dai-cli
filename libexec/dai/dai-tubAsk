@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-### sai-tubAsk -- get the amount of skr in gem for join
+### dai-tubAsk -- get the amount of skr in gem for join
 set -e
-[ $# = 1 ] || sai tubAsk --usage
-wad=$(seth call "${SAI_TUB?}" "ask(uint256)" $(sai wad "$1"))
-sai wad -h "$wad"
+[ $# = 1 ] || dai tubAsk --usage
+wad=$(seth call "${DAI_TUB?}" "ask(uint256)" $(dai wad "$1"))
+dai wad -h "$wad"

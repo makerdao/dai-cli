@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-### sai-off -- get the cage flag
+### dai-off -- get the cage flag
 set -e
-seth call "${SAI_TUB?}" "off()(bool)"
+seth call "${DAI_TUB?}" "off()(bool)"

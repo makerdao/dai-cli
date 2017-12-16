@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-### sai-mat -- get the liquidation ratio
+### dai-mat -- get the liquidation ratio
 set -e
-ray=$(seth call "${SAI_TUB?}" "mat()")
-sai ray -h "$ray"
+ray=$(seth call "${DAI_TUB?}" "mat()")
+dai ray -h "$ray"

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-### sai-help -- print help about sai(1) or one of its subcommands
-### Usage: sai help [<command>]
-###    or: sai <command> --help
+### dai-help -- print help about dai(1) or one of its subcommands
+### Usage: dai help [<command>]
+###    or: dai <command> --help
 
 BUGS=https://github.com/makerdao/sai/issues/new
 
-name=sai
+name=dai
 file=${0%-*}${1+-$1}
 header=$(perl -ne 'print "$2\n" if /^(\S)\1\1(?: (.*))?/' "$file")
 

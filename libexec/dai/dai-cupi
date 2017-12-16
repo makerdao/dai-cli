@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-### sai-cupi -- get the last cup id
+### dai-cupi -- get the last cup id
 set -e
-id=$(seth call "${SAI_TUB?}" "cupi()")
+id=$(seth call "${DAI_TUB?}" "cupi()")
 seth --abi-decode 'f()(uint256)' "$id" | seth --to-dec

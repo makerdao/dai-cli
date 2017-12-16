@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-### sai -- command-line Ethereum RPC client
-### Usage: sai [<options>] <command> [<args>]
-###    or: sai <command> --help
+### dai -- command-line Ethereum RPC client
+### Usage: dai [<options>] <command> [<args>]
+###    or: dai <command> --help
 ###
-### Sai is a simple version of the diversely collateralized Dai stablecoin.
+### Dai 1.0 is a simple version of the diversely collateralized Dai.
 ###
 ### In this model there is one type of underlying collateral (called gems).
-### The SKR token represents claims on the system's excess gems, and is the
-### only admissible type of collateral.  Gems can be converted to/from SKR.
+### The PETH token represents claims on the system's excess gems, and is the
+### only admissible type of collateral. Gems can be converted to/from PETH.
 ###
-### Any transfers of sai or SKR are done using the normal ERC20 interface;
-### until settlement mode is triggered, sai users should only need ERC20.
+### Any transfers of dai or PETH are done using the normal ERC20 interface;
+### until settlement mode is triggered, dai users should only need ERC20.
 ###
 ### To conveniently perform ERC20 transfers, see the token(1) program
 ### available at <https://github.com/dapphub/token>.
 ###
-### Sai options:
+### Dai options:
 ###
 ###    -C, --cup=<id>             ID of cup to perform operation on
 ###        --tub=<address>        address of Tub to perform operation on
@@ -27,8 +27,8 @@
 ###    -F, --from=<account>       account from which to send transaction
 ###    -G, --gas=<number>         amount of gas to provide with transaction
 
-OPTS="sai [<options>] <command> [<args>]
-sai <command> --help
+OPTS="dai [<options>] <command> [<args>]
+dai <command> --help
 --
   Options
 C,cup=id             ID of cup to perform operation on
@@ -60,22 +60,22 @@ while [[ $1 ]]; do
   case $1 in
     --)              shift; break;;
 
-    -C|--cup)        shift; export SAI_CUP="$(seth --to-hexdata "$(seth --to-uint256 "$1")")";;
-       --tub)        shift; export SAI_TUB=$1;;
-       --tap)        shift; export SAI_TAP=$1;;
-       --top)        shift; export SAI_TOP=$1;;
+    -C|--cup)        shift; export DAI_CUP="$(seth --to-hexdata "$(seth --to-uint256 "$1")")";;
+       --tub)        shift; export DAI_TUB=$1;;
+       --tap)        shift; export DAI_TAP=$1;;
+       --top)        shift; export DAI_TOP=$1;;
 
     -F|--from)       shift; export ETH_FROM=$1;;
     -G|--gas)        shift; export ETH_GAS=$1;;
-    
-    -h)                     export SAI_HUMAN=1;;
+
+    -h)                     export DAI_HUMAN=1;;
 
     *) printf "${0##*/}: internal error: %q\n" "$1"; exit 1
   esac; shift
 done
 
-export SAI_TUB=${SAI_TUB:-@sai_tub}
-export SAI_TAP=${SAI_TAP:-@sai_tap}
-export SAI_TOP=${SAI_TOP:-@sai_top}
+export DAI_TUB=${DAI_TUB:-@dai_tub}
+export DAI_TAP=${DAI_TAP:-@dai_tap}
+export DAI_TOP=${DAI_TOP:-@dai_top}
 
 "${0##*/}-${1-help}" "${@:2}"

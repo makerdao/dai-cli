@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-### sai-heal -- cancel debt
+### dai-heal -- cancel debt
 set -e
-(set -x; seth send "${SAI_TAP?}" "heal()")
+(set -x; seth send "${DAI_TAP?}" "heal()")

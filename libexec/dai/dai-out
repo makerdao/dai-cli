@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-### sai-out -- get the post cage exit flag
+### dai-out -- get the post cage exit flag
 set -e
-seth call "${SAI_TUB?}" "out()(bool)"
+seth call "${DAI_TUB?}" "out()(bool)"

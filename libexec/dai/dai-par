@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-### sai-par -- get the accrued holder fee (ref per sai)
+### dai-par -- get the accrued holder fee (ref per dai)
 set -e
-vox=$(seth call "${SAI_TUB?}" 'vox()')
+vox=$(seth call "${DAI_TUB?}" 'vox()')
 vox_address="0x$(seth --abi-decode 'f()(address)' "$vox")"
 ray=$(seth call "$vox_address" "par()")
-sai ray -h "$ray"
+dai ray -h "$ray"

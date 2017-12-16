@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-### sai-air -- get the amount of backing collateral
+### dai-air -- get the amount of backing collateral
 set -e
-wad=$(seth call "${SAI_TUB?}" "air()")
-sai wad -h "$wad"
+wad=$(seth call "${DAI_TUB?}" "air()")
+dai wad -h "$wad"
