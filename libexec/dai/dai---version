@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 cat <<.
-dai 1.0
+dai 0.5: command line interface to the Dai stablecoin system
+
 Copyright (C) 2017 Nikolai Mushegian <nikolai@dapphub.com>
 Copyright (C) 2017 Daniel Brockman <daniel@dapphub.com>
 Copyright (C) 2017 Rain <rainbreak@riseup.net>
+
 License: GNU GPL version 3 or later <https://gnu.org/licenses/gpl>.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
