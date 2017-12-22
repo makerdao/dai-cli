@@ -15,23 +15,29 @@
 ### To conveniently perform ERC20 transfers, see the token(1) program
 ### available at <https://github.com/dapphub/token>.
 ###
+### Connection options:
+###
+###    -C, --chain=<chain>    remote node config (ethlive or kovan)
+###
 ### Dai options:
 ###
-###    -C, --cup=<id>             ID of cup to perform operation on
-###        --tub=<address>        address of Tub to perform operation on
-###        --tap=<address>        address of Tap to perform operation on
-###        --top=<address>        address of Top to perform operation on
+###    --cup=<id>             ID of cup to perform operation on
+###    --tub=<address>        address of Tub to perform operation on
+###    --tap=<address>        address of Tap to perform operation on
+###    --top=<address>        address of Top to perform operation on
 ###
 ### Transaction options:
 ###
-###    -F, --from=<account>       account from which to send transaction
-###    -G, --gas=<number>         amount of gas to provide with transaction
+###    -F, --from=<account>   account from which to send transaction
+###    -G, --gas=<number>     amount of gas to provide with transaction
 
 OPTS="dai [<options>] <command> [<args>]
 dai <command> --help
 --
+  Connection Options
+C,chain=chain        remote node config (ethlive or kovan)
   Options
-C,cup=id             ID of cup to perform operation on
+cup=id               ID of cup to perform operation on
 tub=address          address of Tub to perform operation on
 tap=address          address of Tap to perform operation on
 top=address          address of Top to perform operation on
@@ -60,10 +66,12 @@ while [[ $1 ]]; do
   case $1 in
     --)              shift; break;;
 
-    -C|--cup)        shift; export DAI_CUP="$(seth --to-hexdata "$(seth --to-uint256 "$1")")";;
-       --tub)        shift; export DAI_TUB=$1;;
-       --tap)        shift; export DAI_TAP=$1;;
-       --top)        shift; export DAI_TOP=$1;;
+    -C|--chain)   shift; export SETH_CHAIN=$1;;
+
+    --cup)        shift; export DAI_CUP="$(seth --to-hexdata "$(seth --to-uint256 "$1")")";;
+    --tub)        shift; export DAI_TUB=$1;;
+    --tap)        shift; export DAI_TAP=$1;;
+    --top)        shift; export DAI_TOP=$1;;
 
     -F|--from)       shift; export ETH_FROM=$1;;
     -G|--gas)        shift; export ETH_GAS=$1;;
@@ -74,8 +82,21 @@ while [[ $1 ]]; do
   esac; shift
 done
 
-export DAI_TUB=${DAI_TUB:-@dai_tub}
-export DAI_TAP=${DAI_TAP:-@dai_tap}
-export DAI_TOP=${DAI_TOP:-@dai_top}
+case "$SETH_CHAIN" in
+  kovan)
+    dai_tub=0xa6bfc88aa5a5981a958f9bcb885fcb3db0bf941e
+    dai_tap=0x03113ba1eb4bb193d916d8345ef20bc5f209438c
+    dai_top=0x0c6476699309f166f3a7188f57f3648dc3d07e7d
+  ;;
+  *)
+    dai_tub=0x448a5065aebb8e423f0896e6c5d525c040f59af3
+    dai_tap=0xbda109309f9fafa6dd6a9cb9f1df4085b27ee8ef
+    dai_top=0x9b0ccf7c8994e19f39b2b4cf708e0a7df65fa8a3
+  ;;
+esac
+
+export DAI_TUB=${DAI_TUB:-$dai_tub}
+export DAI_TAP=${DAI_TAP:-$dai_tap}
+export DAI_TOP=${DAI_TOP:-$dai_top}
 
 "${0##*/}-${1-help}" "${@:2}"

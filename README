@@ -27,12 +27,16 @@ DEPENDENCIES
   seth                  https://dapp.tools/seth
   node                  https://nodejs.org
 
+CONNECTION OPTIONS
+
+ -C,chain=chain         remote node config (ethlive or kovan)
+
 OPTIONS
 
- -C, --cup=<id>         ID of cup to perform operation on
-     --tub=<address>    address of Tub to perform operation on
-     --tap=<address>    address of Tap to perform operation on
-     --top=<address>    address of Top to perform operation on
+ --cup=<id>             ID of cup to perform operation on
+ --tub=<address>        address of Tub to perform operation on
+ --tap=<address>        address of Tap to perform operation on
+ --top=<address>        address of Top to perform operation on
 
 TRANSACTION OPTIONS
 
