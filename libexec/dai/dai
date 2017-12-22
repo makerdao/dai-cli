@@ -48,6 +48,11 @@ h                    display output in human-readable form
 
 set -e
 
+if ! [[ $SETH_INIT ]]; then
+  export SETH_INIT=1
+  [[ -e ~/.sethrc ]] && . ~/.sethrc
+fi
+
 if [[ $2 = --help ]]; then
   exec "${0##*/}" help -- "$1"
 elif [[ $2 = --usage ]]; then
