@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+### dai-status -- show system status
+### Usage: dai status
+set -e
+
+
+echo "$SETH_CHAIN"
+echo $(date)
+echo "------------------------------------------------"
+printf "%-5s %s\n" "Top" "${DAI_TOP}"
+printf "%-5s %s\n" "Tap" "${DAI_TAP}"
+printf "%-5s %s\n" "Tub" "${DAI_TUB}"
+echo "------------------------------------------------"
+printf "%-5s %s\n" "Cups" "$(dai cupi)"
+echo "------------------------------------------------"
+tag=$(dai tag)
+pie=$(dai pie)
+printf "%-5s $%.2f\n" "Tag" "$tag"
+printf "%-5s %'.2f ETH\n" "Pie" "$pie"
+coll=$(bc <<< "scale=2; $pie * $tag")
+printf "%-5s $%'.2f\n" "USD" "$coll"
+echo "------------------------------------------------"
+dai=$(seth call "$(dai dai)" 'totalSupply()')
+dai=$(dai wad -h $dai)
+par=$(dai par)
+printf "%-5s $%'.2f\n" "Par" "$(dai par)"
+printf "%-5s %'.2f DAI\n" "Dai" "$dai"
+debt=$(bc <<< "scale=2; $dai * $par")
+printf "%-5s $%'.2f\n" "USD" "$debt"
+echo "------------------------------------------------"
+ratio=$(bc <<< "scale=2; $coll / $debt * 100")
+printf "%-5s %.0f%%\n" "Ratio" "$ratio"
