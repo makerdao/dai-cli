@@ -2,8 +2,6 @@
 ### dai-status -- show system status
 ### Usage: dai status
 set -e
-
-
 echo "$SETH_CHAIN"
 echo $(date)
 echo "------------------------------------------------"

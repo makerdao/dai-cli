@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-### dai-tapBid -- get the amount of skr in dai for boom
+### dai-tapBid -- get the amount of peth in dai for boom
 set -e
 [ $# = 1 ] || dai tapBid --usage
 wad=$(seth call "${DAI_TAP?}" "bid(uint256)" $(dai wad "$1"))

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-### dai-ink -- get the amount of skr collateral locked in a cup
+### dai-ink -- get the amount of peth collateral locked in a cup
 ### Usage: dai --cup=<id> ink
 set -e
 [ ! -z "$DAI_CUP" ] || dai ink --usage
