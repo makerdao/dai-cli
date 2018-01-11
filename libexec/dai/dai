@@ -89,11 +89,11 @@ done
 
 case "$SETH_CHAIN" in
   kovan)
-    dai_tub=0xa6bfc88aa5a5981a958f9bcb885fcb3db0bf941e
-    dai_tap=0x03113ba1eb4bb193d916d8345ef20bc5f209438c
-    dai_top=0x0c6476699309f166f3a7188f57f3648dc3d07e7d
+    dai_tub=0xa71937147b55deb8a530c7229c442fd3f31b7db2
+    dai_tap=0xc936749d2d0139174ee0271bd28325074fdbc654
+    dai_top=0x5f00393547561da3030ebf30e52f5dc0d5d3362c
   ;;
-  *)
+  ethlive|mainnet)
     dai_tub=0x448a5065aebb8e423f0896e6c5d525c040f59af3
     dai_tap=0xbda109309f9fafa6dd6a9cb9f1df4085b27ee8ef
     dai_top=0x9b0ccf7c8994e19f39b2b4cf708e0a7df65fa8a3
