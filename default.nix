@@ -1,8 +1,8 @@
-{ lib, stdenv, makeWrapper, coreutils, perl, gnugrep, nodejs, seth, jays, token }:
+{ lib, stdenv, makeWrapper, glibcLocales, coreutils, perl, gnugrep, nodejs, seth, jays, token }:
 
 stdenv.mkDerivation rec {
   name = "dai-${version}";
-  version = "0.6";
+  version = "0.6.1";
   src = ./.;
 
   nativeBuildInputs = [makeWrapper];
@@ -11,7 +11,10 @@ stdenv.mkDerivation rec {
   postInstall = let path = lib.makeBinPath [
     coreutils perl gnugrep nodejs seth jays token
   ]; in ''
-    wrapProgram "$out/bin/dai" --prefix PATH : "${path}"
+    wrapProgram "$out/bin/dai" --prefix PATH : "${path}" \
+      ${if glibcLocales != null then
+        "--set LOCALE_ARCHIVE \"${glibcLocales}\"/lib/locale/locale-archive"
+        else ""}
   '';
 
   meta = {
